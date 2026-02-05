@@ -117,13 +117,14 @@ binds {
     MOD+C                               { center-column; }
     MOD+CTRL+C                          { center-visible-columns; }
     MOD+MINUS                           { set-column-width "-10%"; }
-    MOD+EQUAL                           { set-column-width "+10%"; }
+    MOD+PLUS                            { set-column-width "+10%"; }
     MOD+SHIFT+MINUS                     { set-window-height "-10%"; }
-    MOD+SHIFT+EQUAL                     { set-window-height "+10%"; }
+    MOD+SHIFT+PLUS                      { set-window-height "+10%"; }
 
     // ─── Modes ───
     MOD+T                               { toggle-window-floating; }
-    MOD+F                               { fullscreen-window; }
+    MOD+SHIFT+F                         { fullscreen-window; }
+    MOD+F 				{ maximize-window-to-edges; }
     MOD+W                               { toggle-column-tabbed-display; }
 
     // ─── Screenshots ───
