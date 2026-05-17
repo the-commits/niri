@@ -2,6 +2,13 @@
 
 My [niri](https://github.com/YaLTeR/niri) Wayland compositor configuration.
 
+## Requirements
+
+- `gcc` – C compiler
+- `make` – Build tool
+- `dconf` – Read/write GNOME settings
+- `notify-send` – Desktop notifications (part of `libnotify`)
+
 ## Structure
 
 - `src/` – C source files
