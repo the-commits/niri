@@ -2,17 +2,22 @@
 
 My [niri](https://github.com/YaLTeR/niri) Wayland compositor configuration.
 
+## Structure
+
+- `src/` – C source files
+- `scripts/` – Compiled binaries (gitignored)
+
 ## Scripts
 
-### `scripts/color-scheme.c`
+### `scripts/color-scheme` (source: `src/color-scheme.c`)
 
 Toggles the GNOME color-scheme between `prefer-dark` and `prefer-light` via
 `dconf`. Bound to `MOD+SHIFT+C` in `config.kdl`.
 
-Run directly with `tcc -run` (Tiny C Compiler):
+To rebuild after editing:
 
 ```
-tcc -run ~/.config/niri/scripts/color-scheme.c
+gcc -o scripts/color-scheme src/color-scheme.c
 ```
 
 ## Debugging
@@ -21,19 +26,15 @@ When something doesn't work, start by isolating the problem:
 
 1. **Check dependencies** – Are the required tools installed?
    ```
-   which dconf notify-send tcc
+   which dconf notify-send
    ```
 2. **Read the current value** – Verify `dconf` is working:
    ```
    dconf read /org/gnome/desktop/interface/color-scheme
    ```
-3. **Check the script syntax** – Run `tcc` with verbose errors:
+3. **Check compilation** – Rebuild with full warnings:
    ```
-   tcc -run ~/.config/niri/scripts/color-scheme.c
-   ```
-   Or compile with GCC for more warnings:
-   ```
-   gcc -Wall -Wextra -o /tmp/test ~/.config/niri/scripts/color-scheme.c && /tmp/test
+   gcc -Wall -Wextra -o /tmp/test src/color-scheme.c && /tmp/test
    ```
 4. **Insert debug prints** – Add `fprintf(stderr, "debug: ...\n");` to trace
    execution flow and variable values.
