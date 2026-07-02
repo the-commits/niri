@@ -16,13 +16,13 @@ tasks:
       cd "${repo_name}"
 
       # Inject mirror notice for GitHub (not present on sourcehut)
-      cat >> README.md <<'EOF'
-
-      > **Do not open issues or pull requests on GitHub** — the mirror there is
-      > [read-only](https://git.sr.ht/~the-commits/niri).
-      > Please use the [sourcehut issue tracker](https://todo.sr.ht/~the-commits/niri)
-      > and send patches to [~the-commits/niri@lists.sr.ht](mailto:~the-commits/niri@lists.sr.ht).
-      EOF
+      # Insert after line 2 (after badges, before the # heading)
+      sed -i '3i\\
+> **Do not open issues or pull requests on GitHub** — the mirror there is\\
+> [read-only](https://git.sr.ht/~the-commits/niri).\\
+> Please use the [sourcehut issue tracker](https://todo.sr.ht/~the-commits/niri)\\
+> and send patches to [~the-commits/niri@lists.sr.ht](mailto:~the-commits/niri@lists.sr.ht).\\
+' README.md
       git add README.md
       git commit -m "chore: add mirror notice (GitHub-only)" --allow-empty
 
