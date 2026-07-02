@@ -1,0 +1,23 @@
+---
+image: alpine/edge
+packages:
+  - git
+sources:
+  - https://git.sr.ht:~the-commits/niri
+secrets:
+  - 897269c2-f89e-4f84-92a9-ae772f42f161
+environment:
+  repo_name: niri
+  github_username: the-commits
+  github_repo: the-commits/niri
+tasks:
+  - push: |
+      set +x
+      cd "${repo_name}"
+      github_token=$(cat ~/secrets/github_config_mirror_pat)
+      github_url=$(printf \
+        "https://%s:%s@github.com/%s" \
+        "${github_username}" \
+        "${github_token}" \
+        "${github_repo}")
+      git push --all "${github_url}" -f
