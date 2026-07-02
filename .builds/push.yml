@@ -14,6 +14,18 @@ tasks:
   - push: |
       set +x
       cd "${repo_name}"
+
+      # Inject mirror notice for GitHub (not present on sourcehut)
+      cat >> README.md <<'EOF'
+
+      > **Do not open issues or pull requests on GitHub** — the mirror there is
+      > [read-only](https://git.sr.ht/~the-commits/niri).
+      > Please use the [sourcehut issue tracker](https://todo.sr.ht/~the-commits/niri)
+      > and send patches to [~the-commits/niri@lists.sr.ht](mailto:~the-commits/niri@lists.sr.ht).
+      EOF
+      git add README.md
+      git commit -m "chore: add mirror notice (GitHub-only)" --allow-empty
+
       github_token=$(cat ~/secrets/github_config_mirror_pat)
       github_url=$(printf \
         "https://%s:%s@github.com/%s" \

@@ -1,3 +1,6 @@
+[![sourcehut](https://img.shields.io/badge/sourcehut-~the--commits/niri-2d6b9e?logo=sourcehut)](https://git.sr.ht/~the-commits/niri)
+[![GitHub mirror](https://img.shields.io/badge/GitHub-the--commits/niri-181717?logo=github)](https://github.com/the-commits/niri)
+
 # niri Config
 
 My [niri](https://github.com/YaLTeR/niri) Wayland compositor configuration.
