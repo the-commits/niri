@@ -2,16 +2,18 @@
 image: alpine/edge
 packages:
   - git
-sources:
-  - git@git.sr.ht:~the-commits/niri
 secrets:
-  - 85e9df90-e412-4859-9f5f-73ca754ad505
+  - 543a9691-ef39-4791-a17c-47bcc0bc6299
   - 897269c2-f89e-4f84-92a9-ae772f42f161
 environment:
   repo_name: niri
   github_username: the-commits
   github_repo: the-commits/niri
 tasks:
+  - clone: |
+      set +x
+      export GIT_SSH_COMMAND="ssh -i ~/.ssh/builds_srht -o StrictHostKeyChecking=accept-new"
+      git clone git@git.sr.ht:~the-commits/niri "${repo_name}"
   - push: |
       set +x
       cd "${repo_name}"
