@@ -146,7 +146,7 @@ binds {
     CTRL+SHIFT+1                        { screenshot; }
     CTRL+SHIFT+2                        { screenshot-screen; }
     CTRL+SHIFT+3                        { screenshot-window; }
-    CTRL+SHIFT+V                        hotkey-overlay-title="Clipboard History" { spawn-sh "selection=$(cliphist list | sort -rn | wofi --dmenu --cache-file /dev/null) && [ -n \"$selection\" ] && printf '%s' \"$selection\" | cliphist decode | wl-copy && sleep 0.1 && case \"$selection\" in *'[[ binary data'*) wtype -M ctrl v -m ctrl ;; *) wtype -M ctrl -M shift v -m shift -m ctrl ;; esac"; }
+    // CTRL+SHIFT+V                        hotkey-overlay-title="Clipboard History" { spawn-sh "selection=$(cliphist list | sort -rn | wofi --dmenu --cache-file /dev/null) && [ -n \"$selection\" ] && printf '%s' \"$selection\" | cliphist decode | wl-copy && sleep 0.1 && case \"$selection\" in *'[[ binary data'*) wtype -M ctrl v -m ctrl ;; *) wtype -M ctrl -M shift v -m shift -m ctrl ;; esac"; }
 
     MOD+ESCAPE                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
