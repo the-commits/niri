@@ -162,6 +162,8 @@ binds {
     spawn-sh-at-startup "awww-daemon"
     spawn-sh-at-startup "awww img ~/Pictures/Wallpapers/literal-wallpaper.png"
     spawn-sh-at-startup "waybar"
+    spawn-sh-at-startup "cliphist daemon &"
+    spawn-sh-at-startup "~/.config/niri/scripts/cliphist-tag-kdeconnect &"
 
     prefer-no-csd
     screenshot-path "~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png"
