@@ -22,7 +22,7 @@ input {
 output "Fujitsu Siemens Computers GmbH B24W-7 LED YV8R020291" {
     focus-at-startup
     mode "1920x1200@59.950"
-    scale 1.125
+    scale 1.0
     position x=-1920 y=0
 }
 
@@ -160,7 +160,7 @@ binds {
 
     spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &"
     spawn-sh-at-startup "awww-daemon"
-    spawn-sh-at-startup "awww img ~/.config/niri/wallpapers/remi-bertogliati-KTxMRE_qQOc-unsplash.webp"
+    spawn-sh-at-startup "awww img ~/Pictures/Wallpapers/literal-wallpaper.png"
     spawn-sh-at-startup "waybar"
 
     prefer-no-csd
@@ -246,6 +246,19 @@ binds {
     window-rule {
         geometry-corner-radius 20 // Set every window radius to 20
         clip-to-geometry true
+    }
+
+// ────────────── Layer Rules ──────────────
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Layer-Rules
+
+    layer-rule {
+        // mako notifications
+        match namespace="^notifications$"
+        // wofi (app launcher + cliphist clipboard history picker share this
+        // namespace, so both get blocked — wofi has no way to tell them apart)
+        match namespace="^wofi$"
+
+        block-out-from "screen-capture"
     }
 
 // ────────────── Environment Variables ──────────────
