@@ -5,54 +5,45 @@ input {
         }
         numlock
     }
-
     touchpad {
         tap
         natural-scroll
     }
-
     focus-follows-mouse
     workspace-auto-back-and-forth
 }
-
 // ────────────── Output Configuration ──────────────
 // You can run `niri msg outputs` to get the correct name for your displays.
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
-
 output "Acer Technologies XZ323QK P1   151309CAF3W01" {
     focus-at-startup
     mode "3840x2160@165.000"
     scale 1.0
     position x=-3840 y=-1090
 }
-
 output "Fujitsu Siemens Computers GmbH B24W-7 LED YV8R020291" {
     focus-at-startup
     mode "1920x1200@59.950"
     scale 1.0
     position x=-1920 y=0
 }
-
 output "eDP-1" {
     focus-at-startup
     mode "2560x1440@165.000" // Set resolution and refresh rate
     scale 2.0
     position x=0 y=0
 }
-
 binds {
     MOD+SHIFT+ESCAPE                    { show-hotkey-overlay; }
-    
     MOD+RETURN                          hotkey-overlay-title="Open Terminal: Ghostty with tmux" { spawn-sh "GTK_IM_MODULE=simple ghostty -e tmux new-session -A -s main"; }
-
     MOD+SPACE                           hotkey-overlay-title="Open App Launcher: wofi" { spawn-sh "wofi"; }
     MOD+B                               hotkey-overlay-title="Open Browser: Google Chrome" { spawn-sh "google-chrome-stable"; }
     MOD+Z                               hotkey-overlay-title="Open Browser: Zen Browser" { spawn-sh "zen-browser"; }
     MOD+ALT+L                           hotkey-overlay-title="Lock Screen: swaylock" { spawn-sh "swaylock"; }
-    MOD+E                             	hotkey-overlay-title="File Manager: Nautilus" { spawn-sh "nautilus"; }
+    MOD+E                               hotkey-overlay-title="File Manager: Nautilus" { spawn-sh "nautilus"; }
     MOD+SHIFT+C                         hotkey-overlay-title="Toggle Color Scheme" { spawn-sh "~/.config/niri/scripts/color-scheme"; }
     MOD+SHIFT+R                         hotkey-overlay-title="Toggle Region Recording" { spawn-sh "pidof wf-recorder && killall -s SIGINT wf-recorder || (mkdir -p ~/Videos/Screenrecords && wf-recorder -g \"$(slurp)\" -f ~/Videos/Screenrecords/$(date +%F_%H-%M-%S).mp4)"; }
-
+    CTRL+SHIFT+V                        hotkey-overlay-title="Clipboard History" { spawn-sh "~/.config/niri/scripts/cliphist-picker"; }
     XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
     XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     XF86AudioMute                       allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
@@ -61,7 +52,6 @@ binds {
     XF86AudioPause                      allow-when-locked=true { spawn-sh "playerctl play-pause"; }
     XF86AudioPlay                       allow-when-locked=true { spawn-sh "playerctl play-pause"; }
     XF86AudioPrev                       allow-when-locked=true { spawn-sh "playerctl previous"; }
-
     MOD+Q                               { close-window; }
     MOD+LEFT                            { focus-column-left; }
     MOD+H                               { focus-column-left; }
@@ -71,7 +61,6 @@ binds {
     MOD+K                               { focus-window-up; }
     MOD+DOWN                            { focus-window-down; }
     MOD+J                               { focus-window-down; }
-
     MOD+CTRL+LEFT                       { move-column-left; }
     MOD+CTRL+H                          { move-column-left; }
     MOD+CTRL+RIGHT                      { move-column-right; }
@@ -80,38 +69,31 @@ binds {
     MOD+CTRL+K                          { move-window-up; }
     MOD+CTRL+DOWN                       { move-window-down; }
     MOD+CTRL+J                          { move-window-down; }
-
     MOD+HOME                            { focus-column-first; }
     MOD+END                             { focus-column-last; }
     MOD+CTRL+HOME                       { move-column-to-first; }
     MOD+CTRL+END                        { move-column-to-last; }
-
     MOD+SHIFT+LEFT                      { focus-monitor-left; }
     MOD+SHIFT+RIGHT                     { focus-monitor-right; }
     MOD+SHIFT+UP                        { focus-monitor-up; }
     MOD+SHIFT+DOWN                      { focus-monitor-down; }
-
     MOD+SHIFT+CTRL+LEFT                 { move-column-to-monitor-left; }
     MOD+SHIFT+CTRL+RIGHT                { move-column-to-monitor-right; }
     MOD+SHIFT+CTRL+UP                   { move-column-to-monitor-up; }
     MOD+SHIFT+CTRL+DOWN                 { move-column-to-monitor-down; }
-
     // ─── Workspace Switching ───
     MOD+WHEELSCROLLDOWN                 cooldown-ms=150 { focus-workspace-down; }
     MOD+WHEELSCROLLUP                   cooldown-ms=150 { focus-workspace-up; }
     MOD+CTRL+WHEELSCROLLDOWN            cooldown-ms=150 { move-column-to-workspace-down; }
     MOD+CTRL+WHEELSCROLLUP              cooldown-ms=150 { move-column-to-workspace-up; }
-
     MOD+WHEELSCROLLRIGHT                { focus-column-right; }
     MOD+WHEELSCROLLLEFT                 { focus-column-left; }
     MOD+CTRL+WHEELSCROLLRIGHT           { move-column-right; }
     MOD+CTRL+WHEELSCROLLLEFT            { move-column-left; }
-
     MOD+SHIFT+WHEELSCROLLDOWN           { focus-column-right; }
     MOD+SHIFT+WHEELSCROLLUP             { focus-column-left; }
     MOD+CTRL+SHIFT+WHEELSCROLLDOWN      { move-column-right; }
     MOD+CTRL+SHIFT+WHEELSCROLLUP        { move-column-left; }
-
     MOD+1                               { focus-workspace 1; }
     MOD+2                               { focus-workspace 2; }
     MOD+3                               { focus-workspace 3; }
@@ -121,7 +103,6 @@ binds {
     MOD+7                               { focus-workspace 7; }
     MOD+8                               { focus-workspace 8; }
     MOD+9                               { focus-workspace 9; }
-
     MOD+CTRL+1                          { move-column-to-workspace 1; }
     MOD+CTRL+2                          { move-column-to-workspace 2; }
     MOD+CTRL+3                          { move-column-to-workspace 3; }
@@ -131,9 +112,7 @@ binds {
     MOD+CTRL+7                          { move-column-to-workspace 7; }
     MOD+CTRL+8                          { move-column-to-workspace 8; }
     MOD+CTRL+9                          { move-column-to-workspace 9; }
-
     MOD+TAB                             { focus-workspace-previous; }
-
     // ─── Layout Controls ───
     MOD+CTRL+F                          { expand-column-to-available-width; }
     MOD+C                               { center-column; }
@@ -142,68 +121,53 @@ binds {
     MOD+PLUS                            { set-column-width "+10%"; }
     MOD+SHIFT+MINUS                     { set-window-height "-10%"; }
     MOD+SHIFT+PLUS                      { set-window-height "+10%"; }
-
     // ─── Modes ───
     MOD+T                               { toggle-window-floating; }
     MOD+SHIFT+F                         { fullscreen-window; }
-    MOD+F 				                      { maximize-window-to-edges; }
+    MOD+F                               { maximize-window-to-edges; }
     MOD+W                               { toggle-column-tabbed-display; }
-
     // ─── Screenshots ───
     CTRL+SHIFT+1                        { screenshot; }
     CTRL+SHIFT+2                        { screenshot-screen; }
     CTRL+SHIFT+3                        { screenshot-window; }
-    CTRL+SHIFT+V                        hotkey-overlay-title="Clipboard History" { spawn-sh "~/.config/niri/scripts/cliphist-picker"; }
-
     MOD+ESCAPE                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-
     CTRL+ALT+DELETE                     { quit; } // Also quits Niri
     MOD+SHIFT+P                         { power-off-monitors; } // Turn off screens (useful for OLED or privacy)
     MOD+O                               repeat=false { toggle-overview; }
 }
-
 // ────────────── Startup Applications ──────────────
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
-
     spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &"
     spawn-sh-at-startup "awww-daemon"
     spawn-sh-at-startup "awww img ~/Pictures/Wallpapers/literal-wallpaper.png"
     spawn-sh-at-startup "waybar"
     spawn-sh-at-startup "systemctl --user start cliphist"
     spawn-sh-at-startup "~/.config/niri/scripts/cliphist-tag-kdeconnect &"
-
     prefer-no-csd
     screenshot-path "~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png"
-
 // ────────────── Layout Settings ──────────────
-
     layout {
         gaps 8
         center-focused-column "never"
-
         preset-column-widths {
             proportion 0.33333
             proportion 0.5
             proportion 0.66667
             proportion 1.0
         }
-
         focus-ring {
             width 2
             active-color "#00ac89"
             inactive-color "#505050"
         }
-
         shadow {
             softness 30
             spread 5
             offset x=0 y=5
             color "#0007"
         }
-
         struts {}
     }
-
 // ────────────── Animation Settings ──────────────
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
     animations {
@@ -238,41 +202,32 @@ binds {
             spring damping-ratio=1.0 stiffness=900 epsilon=0.0001
         }
     }
-
 // ────────────── Window Rules ──────────────
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
-
     window-rule {
         match app-id=r#"firefox$"# title="^Picture-in-Picture$"
         open-floating true // Always float Firefox PiP windows
     }
-
     window-rule {
         match app-id=r#"com-azefsw-audioconnect-desktop-app-MainKt$"# title="^AudioRelay$"
         open-floating true
     }
-
     window-rule {
         geometry-corner-radius 20 // Set every window radius to 20
         clip-to-geometry true
     }
-
 // ────────────── Layer Rules ──────────────
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layer-Rules
-
     layer-rule {
         // mako notifications
         match namespace="^notifications$"
         // wofi (app launcher + cliphist clipboard history picker share this
         // namespace, so both get blocked — wofi has no way to tell them apart)
         match namespace="^wofi$"
-
         block-out-from "screen-capture"
     }
-
 // ────────────── Environment Variables ──────────────
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#environment
-
     environment {
         DISPLAY ":1"
         ELECTRON_OZONE_PLATFORM_HINT "auto"
@@ -281,7 +236,6 @@ binds {
         XDG_SESSION_TYPE "wayland"
         XDG_CURRENT_DESKTOP "niri"
     }
-
     hotkey-overlay {
         skip-at-startup
     }
